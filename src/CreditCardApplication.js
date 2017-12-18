@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
-export default class CreditCardApplication extends Component {
+import { connect } from 'react-redux';
+
+class CreditCardApplication extends Component {
   render() {
-    const { loggedInAs, isCreditCardHolder, setIsCreditCardHolder } = this.props;
+    const { loggedInAs, isCreditCardHolder} = this.props;
 
     return (
       <div className="credit-card-application">
@@ -10,7 +12,7 @@ export default class CreditCardApplication extends Component {
         {loggedInAs && <div>
           {!isCreditCardHolder && <div>
             <p>Hi {loggedInAs}, apply now!</p>
-            <p><button className="button" onClick={()=>setIsCreditCardHolder(true)}>Yes, sign me up!</button></p>
+            <p><button className="button">Yes, sign me up!</button></p>
           </div>}
           {isCreditCardHolder && "Thanks for signing up!"}
         </div>}
@@ -18,3 +20,12 @@ export default class CreditCardApplication extends Component {
     )
   }
 };
+
+const mapStateToProps = state => {
+  return {
+    loggedInAs: state.loggedInAs,
+    isCreditCardHolder: state.isCreditCardHolder,
+  }
+};
+
+export default connect (mapStateToProps)(CreditCardApplication);
