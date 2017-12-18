@@ -8,7 +8,10 @@ export default class Footer extends Component {
         <div className="box" />
         <div className="box" />
         <div className="box">
-          <CreditCardApplication />
+          <CreditCardApplication 
+              loggedInAs={this.props.loggedInAs}
+              isCreditCardHolder={this.props.isCreditCardHolder}
+              setIsCreditCardHolder={this.props.setIsCreditCardHolder}/>
         </div>
         <div className="box" />
       </div>
